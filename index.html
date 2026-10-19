@@ -4,104 +4,164 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#f5f5f7">
-  <meta name="description"
-        content="Bing Wallpaper UHD 高清壁纸图片仓库，按年份和月份保存每日壁纸原图，展示最新UHD图片。">
+  <meta name="description" content="Bing Wallpaper UHD 高清壁纸图片仓库，按年份和月份保存每日壁纸原图。">
   <title>Bing 壁纸 UHD · 高清图片仓库</title>
-  
-  <!-- 添加 Favicon -->
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-
+  
   <style>
     :root {
+      color-scheme: light;
       --bg: #f5f5f7;
+      --surface: rgba(255, 255, 255, .82);
       --text: #1d1d1f;
       --muted: #6e6e73;
       --border: rgba(0, 0, 0, .08);
       --accent: #1769d2;
-      --max-width: 1000px;
+      --shadow: 0 12px 36px rgba(0, 0, 0, .055);
+      --radius: 20px;
+      --max-width: 1160px;
     }
 
-    * { box-sizing: border-box; }
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 84px;
+    }
 
     body {
       margin: 0;
       color: var(--text);
-      background: radial-gradient(circle at 50% -10%, #fff, transparent 44%), var(--bg);
-      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "PingFang SC", "Microsoft YaHei", sans-serif;
-      line-height: 1.7;
+      background:
+        radial-gradient(
+          circle at 50% -10%,
+          rgba(255, 255, 255, .95),
+          transparent 42%
+        ),
+        var(--bg);
+      font-family:
+        -apple-system, BlinkMacSystemFont,
+        "SF Pro Text", "PingFang SC",
+        "Microsoft YaHei", sans-serif;
+      line-height: 1.65;
     }
 
-    a { color: inherit; text-decoration: none; }
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      font: inherit;
+    }
 
     .container {
-      width: min(calc(100% - 32px), var(--max-width));
-      margin: 0 auto;
-    }
-
-    header {
-      border-bottom: 1px solid var(--border);
-      background: rgba(255, 255, 255, .6);
-      backdrop-filter: blur(12px);
+      width: min(calc(100% - 36px), var(--max-width));
+      margin-inline: auto;
     }
 
     .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      border-bottom: 1px solid rgba(0, 0, 0, .05);
+      background: rgba(245, 245, 247, .82);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+    }
+
+    .topbar-inner {
       display: flex;
       min-height: 64px;
       align-items: center;
       justify-content: space-between;
-      gap: 16px;
+      gap: 20px;
     }
 
     .brand {
-      display: flex;
+      display: inline-flex;
       align-items: center;
       gap: 10px;
-      font-size: 14px;
+      font-size: 15px;
       font-weight: 750;
+      white-space: nowrap;
     }
 
-    .mark {
+    .brand-mark {
       display: grid;
       width: 32px;
       height: 32px;
       place-items: center;
       border-radius: 10px;
       color: #fff;
-      background: #222;
+      background: linear-gradient(135deg, #171717, #626773);
       font-weight: 800;
     }
 
-    .github {
-      padding: 8px 12px;
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      background: #fff;
-      font-size: 12px;
-      font-weight: 650;
-      transition: background 0.2s;
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 5px;
     }
 
-    .github:hover { background: #f0f0f2; }
+    .nav a {
+      padding: 8px 11px;
+      border-radius: 10px;
+      color: var(--muted);
+      font-size: 13px;
+      transition: background .2s, color .2s;
+    }
 
-    main { padding: 72px 0 84px; }
+    .nav a:hover {
+      color: var(--text);
+      background: rgba(0, 0, 0, .05);
+    }
+
+    .hero {
+      padding: 82px 0 58px;
+      text-align: center;
+    }
 
     .eyebrow {
-      color: var(--accent);
-      font-size: 11px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 22px;
+      padding: 7px 12px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      color: var(--muted);
+      background: rgba(255, 255, 255, .76);
+      font-size: 12px;
+      font-weight: 650;
+    }
+
+    .eyebrow-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #30a46c;
+      box-shadow: 0 0 0 4px rgba(48, 164, 108, .12);
+    }
+
+    .hero h1 {
+      margin: 0;
+      font-size: clamp(36px, 6vw, 68px);
       font-weight: 800;
-      letter-spacing: 2px;
+      line-height: 1.12;
+      letter-spacing: -.055em;
     }
 
-    h1 {
-      margin: 13px 0 0;
-      font-size: clamp(35px, 6vw, 58px);
-      line-height: 1.15;
-      letter-spacing: -.05em;
+    .hero h1 span {
+      display: block;
+      color: #5b6575;
     }
 
-    .lead {
-      max-width: 680px;
-      margin-top: 20px;
+    .hero-description {
+      max-width: 690px;
+      margin: 22px auto 0;
       color: var(--muted);
       font-size: 15px;
       line-height: 1.9;
@@ -109,9 +169,10 @@
 
     .actions {
       display: flex;
+      justify-content: center;
       flex-wrap: wrap;
       gap: 10px;
-      margin-top: 26px;
+      margin-top: 28px;
     }
 
     .button {
@@ -119,208 +180,439 @@
       min-height: 42px;
       align-items: center;
       justify-content: center;
-      padding: 0 15px;
+      padding: 0 17px;
       border: 1px solid var(--border);
       border-radius: 999px;
       background: #fff;
-      font-size: 12px;
-      font-weight: 700;
-      transition: background 0.2s, border-color 0.2s;
+      font-size: 13px;
+      font-weight: 650;
+      transition: transform .2s, background .2s;
     }
 
-    .button:hover { background: #f5f5f7; border-color: #bbb; }
-
-    .button-primary { border-color: #222; color: #fff; background: #222; }
-    .button-primary:hover { background: #333; border-color: #333; }
-
-    .section { margin-top: 54px; }
-
-    h2 {
-      margin: 0 0 15px;
-      font-size: 22px;
-      letter-spacing: -.03em;
+    .button:hover {
+      transform: translateY(-1px);
+      background: #f9f9fb;
     }
 
-    h2 .badge {
-      margin-left: 10px;
-      padding: 3px 10px;
-      border-radius: 30px;
-      background: #e8e8ed;
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 0;
+    .button-primary {
+      border-color: var(--accent);
+      color: #fff;
+      background: var(--accent);
+    }
+
+    .button-primary:hover {
+      background: #0e58b9;
+    }
+
+    /* 统计数据区 (为了统一风格，这里可选，为了UHD简单起见没加复杂数据，但加了类似结构) */
+    
+    .section {
+      margin-bottom: 76px;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 18px;
+      margin-bottom: 22px;
+    }
+
+    .section-title {
+      margin: 0;
+      font-size: clamp(23px, 3vw, 30px);
+      line-height: 1.3;
+      letter-spacing: -.035em;
+    }
+
+    .section-description {
+      max-width: 720px;
+      margin: 7px 0 0;
       color: var(--muted);
-      vertical-align: middle;
+      font-size: 13px;
+      line-height: 1.8;
     }
 
-    .grid {
+    .section-link {
+      flex: 0 0 auto;
+      color: var(--accent);
+      font-size: 13px;
+      font-weight: 650;
+    }
+
+    /* 最新壁纸网格 (对齐 bing-data 的样式) */
+    .wallpaper-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 15px;
+    }
+
+    .wallpaper-card {
+      display: block;
+      min-width: 0;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      background: #fff;
+      transition: transform .25s, box-shadow .25s;
+    }
+
+    .wallpaper-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 28px rgba(0, 0, 0, .09);
+    }
+
+    .wallpaper-image-wrap {
+      position: relative;
+      overflow: hidden;
+      aspect-ratio: 16 / 10;
+      background: #e8e8ed;
+    }
+
+    .wallpaper-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform .4s;
+    }
+
+    .wallpaper-card:hover .wallpaper-image {
+      transform: scale(1.035);
+    }
+
+    .wallpaper-content {
+      padding: 13px 14px 15px;
+    }
+
+    .wallpaper-date {
+      color: var(--muted);
+      font-size: 11px;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .wallpaper-title {
+      display: -webkit-box;
+      overflow: hidden;
+      margin: 5px 0 0;
+      font-size: 14px;
+      font-weight: 700;
+      line-height: 1.5;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 2;
+    }
+
+    .wallpaper-description {
+      display: -webkit-box;
+      overflow: hidden;
+      margin-top: 6px;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.65;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 2;
+    }
+
+    .loading,
+    .empty {
+      grid-column: 1 / -1;
+      padding: 38px 18px;
+      border: 1px dashed rgba(0, 0, 0, .12);
+      border-radius: 16px;
+      color: var(--muted);
+      text-align: center;
+      font-size: 13px;
+    }
+
+    /* 资源卡片区 (原仓库职责、目录结构) */
+    .resource-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .resource-card {
+      display: flex;
+      min-width: 0;
+      min-height: 168px;
+      flex-direction: column;
+      padding: 21px;
+      border: 1px solid var(--border);
+      border-radius: 17px;
+      background: var(--surface);
+      transition: transform .2s, background .2s;
+    }
+
+    .resource-card:hover {
+      transform: translateY(-2px);
+      background: #fff;
+    }
+
+    .resource-icon {
+      display: grid;
+      width: 36px;
+      height: 36px;
+      place-items: center;
+      margin-bottom: 14px;
+      border-radius: 11px;
+      background: #eceef2;
+      color: #343945;
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .resource-title {
+      margin: 0;
+      font-size: 15px;
+      font-weight: 750;
+    }
+
+    .resource-description {
+      margin: 6px 0 0;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.7;
+    }
+
+    .resource-url {
+      margin-top: auto;
+      padding-top: 14px;
+      color: var(--accent);
+      font-size: 11px;
+      overflow-wrap: anywhere;
+    }
+
+    /* 目录结构与规则说明区 */
+    .info-grid {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 14px;
     }
 
-    .card {
+    .info-card {
       min-width: 0;
-      padding: 21px;
+      padding: 22px;
       border: 1px solid var(--border);
       border-radius: 17px;
-      background: rgba(255, 255, 255, .76);
+      background: var(--surface);
     }
 
-    .card h3 { margin: 0 0 7px; font-size: 15px; }
-    .card p { margin: 0; color: var(--muted); font-size: 13px; line-height: 1.8; }
+    .info-card h3 {
+      margin: 0 0 8px;
+      font-size: 16px;
+    }
 
-    .path {
-      margin-top: 12px;
-      padding: 12px;
+    .info-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.85;
+    }
+
+    .code-box {
+      margin-top: 13px;
+      padding: 12px 14px;
       overflow-wrap: anywhere;
       border-radius: 10px;
       color: #f5f5f7;
-      background: #24262c;
+      background: #22242a;
       font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
       font-size: 11px;
       line-height: 1.8;
     }
 
-    /* 最新壁纸网格 */
-    .latest-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 16px;
-      margin: 18px 0 6px;
-    }
-
-    .latest-item {
-      display: block;
-      border-radius: 18px;
-      overflow: hidden;
-      background: #fff;
-      border: 1px solid var(--border);
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-      cursor: pointer;
-    }
-
-    .latest-item:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
-    }
-
-    .latest-item img {
-      display: block;
-      width: 100%;
-      aspect-ratio: 16 / 9;
-      object-fit: cover;
-      background: #e9e9ed;
-    }
-
-    .latest-meta {
-      padding: 10px 12px 12px;
-      font-size: 12px;
-      color: var(--muted);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      border-top: 1px solid var(--border);
-    }
-
-    .latest-meta span:first-child { font-weight: 600; color: var(--text); }
-    .latest-meta span:last-child { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 11px; opacity: 0.7; }
-
-    .latest-note {
-      margin-top: 12px;
-      font-size: 13px;
-      color: var(--muted);
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      flex-wrap: wrap;
-    }
-
-    .latest-note a {
-      color: var(--accent);
-      font-weight: 600;
-      border-bottom: 1px dashed rgba(23, 105, 210, 0.3);
-    }
-
     footer {
-      padding: 24px 0 36px;
+      padding: 28px 0 42px;
       border-top: 1px solid var(--border);
       color: var(--muted);
       font-size: 12px;
     }
 
-    @media (max-width: 800px) {
-      .latest-grid { grid-template-columns: repeat(2, 1fr); }
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 14px;
     }
 
-    @media (max-width: 600px) {
-      main { padding-top: 50px; }
-      .grid, .latest-grid { grid-template-columns: 1fr; }
-      h1 { font-size: 36px; }
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+
+    .footer-links a:hover {
+      color: var(--text);
+    }
+
+    @media (max-width: 900px) {
+      .wallpaper-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .resource-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 650px) {
+      .container {
+        width: min(calc(100% - 26px), var(--max-width));
+      }
+
+      .nav {
+        display: none;
+      }
+
+      .hero {
+        padding: 58px 0 42px;
+      }
+
+      .hero-description {
+        font-size: 13px;
+      }
+
+      .section {
+        margin-bottom: 56px;
+      }
+
+      .section-header {
+        display: block;
+      }
+
+      .section-link {
+        display: inline-block;
+        margin-top: 10px;
+      }
+
+      .resource-grid,
+      .info-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-inner {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+
+    @media (max-width: 390px) {
+      .wallpaper-grid {
+        gap: 9px;
+      }
+
+      .wallpaper-content {
+        padding: 10px;
+      }
+
+      .wallpaper-title {
+        font-size: 12px;
+      }
+
+      .wallpaper-description {
+        font-size: 11px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        animation-duration: .01ms !important;
+        transition-duration: .01ms !important;
+      }
     }
   </style>
 </head>
 
 <body>
-  <header>
-    <div class="container topbar">
+  <header class="topbar">
+    <div class="container topbar-inner">
       <a class="brand" href="/">
-        <span class="mark">B</span>
+        <span class="brand-mark">B</span>
         <span>Bing 壁纸 UHD</span>
       </a>
-      <a class="github" href="https://github.com/chendada00/bing-uhd" target="_blank" rel="noopener noreferrer">
-        GitHub 源码 ↗
-      </a>
+
+      <nav class="nav" aria-label="页面导航">
+        <a href="#latest">最新壁纸</a>
+        <a href="#about">仓库说明</a>
+        <a href="https://bing-data.伴随.cn/" target="_blank">数据仓库 ↗</a>
+      </nav>
     </div>
   </header>
 
-  <main class="container">
-    <div class="eyebrow">BING WALLPAPER ARCHIVE</div>
+  <main>
+    <section class="hero">
+      <div class="container">
+        <div class="eyebrow">
+          <span class="eyebrow-dot"></span>
+          BING WALLPAPER UHD ARCHIVE
+        </div>
 
-    <h1>UHD 高清壁纸<br>图片资源仓库</h1>
+        <h1>
+          UHD 高清壁纸
+          <span>图片资源仓库</span>
+        </h1>
 
-    <p class="lead">
-      本仓库专门保存 Bing 每日壁纸的 UHD 高清图片。
-      图片按照年份和月份组织，并使用日期作为文件名。
-      JSON 元数据、历史索引、预览图和颜色分析由独立的 bing-data 仓库维护。
-    </p>
+        <p class="hero-description">
+          本仓库专门保存 Bing 每日壁纸的 UHD 高清图片。图片按照年份和月份组织，并使用日期作为文件名。JSON 元数据、历史索引、预览图和颜色分析由独立的 bing-data 仓库维护。
+        </p>
 
-    <div class="actions">
-      <a class="button button-primary" href="https://bing.伴随.cn/" target="_blank" rel="noopener noreferrer">打开壁纸网站 ↗</a>
-      <a class="button" href="https://bing-data.伴随.cn/" target="_blank" rel="noopener noreferrer">查看数据仓库 ↗</a>
-      <a class="button" href="https://github.com/chendada00/bing-uhd" target="_blank" rel="noopener noreferrer">查看 UHD 源码 ↗</a>
-    </div>
-
-    <!-- 最新UHD壁纸展示区域 (由JS动态渲染) -->
-    <section class="section" style="margin-top: 50px;">
-      <h2>
-        📸 最新 UHD 壁纸
-        <span class="badge" id="latest-badge">获取中...</span>
-      </h2>
-
-      <div class="latest-grid" id="latest-grid">
-        <!-- 骨架屏占位 -->
-        <div class="latest-item" style="animation: pulse 1.5s infinite; background: #e9e9ed; height: 200px; border: none; box-shadow: none;"></div>
-        <div class="latest-item" style="animation: pulse 1.5s infinite; background: #e9e9ed; height: 200px; border: none; box-shadow: none;"></div>
-        <div class="latest-item" style="animation: pulse 1.5s infinite; background: #e9e9ed; height: 200px; border: none; box-shadow: none;"></div>
-        <div class="latest-item" style="animation: pulse 1.5s infinite; background: #e9e9ed; height: 200px; border: none; box-shadow: none;"></div>
-      </div>
-
-      <div class="latest-note">
-        <span>📅 以上为最近更新的 UHD 图片，点击图片可直接查看原图。</span>
-        <a href="https://bing.伴随.cn/" target="_blank">在网站查看全部 →</a>
+        <div class="actions">
+          <a class="button button-primary" href="https://bing.伴随.cn/" target="_blank" rel="noopener noreferrer">
+            打开壁纸网站 ↗
+          </a>
+          <a class="button" href="https://bing-data.伴随.cn/" target="_blank" rel="noopener noreferrer">
+            查看数据仓库 ↗
+          </a>
+          <a class="button" href="https://github.com/chendada00/bing-uhd" target="_blank" rel="noopener noreferrer">
+            查看 UHD 源码 ↗
+          </a>
+        </div>
       </div>
     </section>
 
-    <!-- 原有的目录结构、URL规则等卡片区域 -->
-    <section class="section">
-      <h2>图片目录结构</h2>
-      <div class="grid">
-        <article class="card">
+    <!-- 最新UHD壁纸展示区域 -->
+    <section class="container section" id="latest">
+      <div class="section-header">
+        <div>
+          <h2 class="section-title">最新壁纸</h2>
+          <p class="section-description">
+            自动读取当前最新日期的 UHD 图片。卡片展示预览图（原图），点击后直接打开 UHD 高清原图。
+          </p>
+        </div>
+        <a class="section-link" href="https://bing.伴随.cn/" target="_blank" rel="noopener noreferrer">
+          打开完整前端 →
+        </a>
+      </div>
+
+      <div class="wallpaper-grid" id="latest-grid">
+        <!-- 骨架屏占位 -->
+        <div class="loading">正在获取最新壁纸……</div>
+      </div>
+    </section>
+
+    <!-- 原有的目录结构、URL规则等说明区域 -->
+    <section class="container section" id="about">
+      <div class="section-header">
+        <div>
+          <h2 class="section-title">仓库说明</h2>
+          <p class="section-description">
+            本仓库只负责 UHD 图片文件。数据与图片分离，便于浏览、检索和复用。
+          </p>
+        </div>
+      </div>
+
+      <div class="info-grid" style="margin-bottom: 14px;">
+        <article class="info-card">
           <h3>按年份与月份保存</h3>
-          <p>每张壁纸使用 YYYY-MM-DD.jpg 作为文件名，便于根据日期构造图片地址。</p>
-          <div class="path">
+          <p>
+            每张壁纸使用 YYYY-MM-DD.jpg 作为文件名，
+            便于根据日期构造图片地址。
+          </p>
+          <div class="code-box">
             images/<br>
             └── 2026/<br>
             &nbsp;&nbsp;&nbsp;&nbsp;└── 10/<br>
@@ -328,67 +620,101 @@
           </div>
         </article>
 
-        <article class="card">
+        <article class="info-card">
           <h3>图片 URL 规则</h3>
-          <p>将日期替换为目标壁纸日期，即可构造对应的高清图片地址。访问前需确认该日期的图片确实存在。</p>
-          <div class="path" id="url-example">动态获取当前域名...</div>
-        </article>
-
-        <article class="card">
-          <h3>仓库职责</h3>
-          <p>本仓库只负责 UHD 图片文件，不保存月度 JSON、preview、Base64 或颜色直方图数据。</p>
-        </article>
-
-        <article class="card">
-          <h3>数据与前端</h3>
-          <p>壁纸网站从 bing-data 读取元数据与预览图，在需要查看高清图或下载时再访问本仓库。</p>
-          <div class="path">
-            数据：https://bing-data.伴随.cn/<br>
-            前端：https://bing.伴随.cn/
+          <p>
+            将日期替换为目标壁纸日期，即可构造对应的高清图片地址。
+            访问前需确认该日期的图片确实存在。
+          </p>
+          <div class="code-box" id="url-example">
+            https://当前域名/images/YYYY/MM/YYYY-MM-DD.jpg
           </div>
         </article>
+      </div>
 
-        <article class="card">
-          <h3>📐 图片规格</h3>
-          <p>常见尺寸 3840×2160 (16:9)，JPEG 格式。个别日期可能因源尺寸不同而略有差异，以实际文件为准。</p>
+      <div class="resource-grid">
+        <article class="resource-card">
+          <span class="resource-icon">职</span>
+          <h3 class="resource-title">仓库职责</h3>
+          <p class="resource-description">
+            本仓库只负责 UHD 图片文件，不保存月度 JSON、preview、Base64 或颜色直方图数据。
+          </p>
         </article>
 
-        <article class="card">
-          <h3>🔄 自动更新流程</h3>
-          <p>由 bing-data 的 GitHub Actions 每日抓取、下载 UHD 图片并推送至本仓库，确保图片持续更新。</p>
-          <div class="path">bing-data workflow → 下载 → 提交到 bing-uhd</div>
+        <article class="resource-card">
+          <span class="resource-icon">数</span>
+          <h3 class="resource-title">数据与前端</h3>
+          <p class="resource-description">
+            壁纸网站从 bing-data 读取元数据与预览图，在需要查看高清图或下载时再访问本仓库。
+          </p>
+          <span class="resource-url">bing-data.伴随.cn</span>
         </article>
+
+        <article class="resource-card">
+          <span class="resource-icon">规</span>
+          <h3 class="resource-title">图片规格</h3>
+          <p class="resource-description">
+            常见尺寸 3840×2160 (16:9)，JPEG 格式。个别日期可能因源尺寸不同而略有差异，以实际文件为准。
+          </p>
+        </article>
+
+        <article class="resource-card">
+          <span class="resource-icon">更</span>
+          <h3 class="resource-title">自动更新流程</h3>
+          <p class="resource-description">
+            由 bing-data 的 GitHub Actions 每日抓取、下载 UHD 图片并推送至本仓库，确保图片持续更新。
+          </p>
+          <span class="resource-url">bing-data workflow → bing-uhd</span>
+        </article>
+
+        <article class="resource-card">
+          <span class="resource-icon">访</span>
+          <h3 class="resource-title">静态资源访问</h3>
+          <p class="resource-description">
+            以静态图片文件为主，适合由 GitHub Pages、Cloudflare Pages 或自建 CDN 提供资源。
+          </p>
+        </article>
+
+        <a class="resource-card" href="https://github.com/chendada00/bing-uhd" target="_blank" rel="noopener noreferrer">
+          <span class="resource-icon">GH</span>
+          <h3 class="resource-title">仓库源码</h3>
+          <p class="resource-description">
+            查看本仓库的文件结构、自动化流程以及相关文档。
+          </p>
+          <span class="resource-url">github.com/chendada00/bing-uhd</span>
+        </a>
       </div>
     </section>
   </main>
 
   <footer>
-    <div class="container">
-      Bing Wallpaper UHD · 高清图片仓库 · <a href="https://github.com/chendada00/bing-uhd" style="color: var(--muted); text-decoration: underline;" target="_blank">GitHub</a>
+    <div class="container footer-inner">
+      <span>Bing Wallpaper UHD · 高清图片仓库</span>
+      <div class="footer-links">
+        <a href="https://bing.伴随.cn/" target="_blank" rel="noopener noreferrer">前端网站</a>
+        <a href="https://bing-data.伴随.cn/" target="_blank" rel="noopener noreferrer">数据仓库</a>
+        <a href="https://github.com/chendada00/bing-uhd" target="_blank" rel="noopener noreferrer">UHD 源码</a>
+      </div>
     </div>
   </footer>
 
+  <!-- 自动获取最新图片的脚本 (保持之前的原逻辑) -->
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       const grid = document.getElementById('latest-grid');
-      const badge = document.getElementById('latest-badge');
       const urlExample = document.getElementById('url-example');
       
-      // 核心修改：动态获取当前浏览器的 Origin (协议 + 域名 + 端口)
-      // 例如访问 https://bing-uhd.伴随.cn/ 时，origin 就是 https://bing-uhd.伴随.cn
-      // 本地测试 http://127.0.0.1:5500/ 时，origin 就是 http://127.0.0.1:5500
+      // 动态获取当前浏览器的域名
       const currentOrigin = window.location.origin;
       const baseUrl = `${currentOrigin}/images`;
       
-      // 同步更新页面下方“图片 URL 规则”的示例展示
+      // 同步更新页面“图片 URL 规则”的示例展示
       if (urlExample) {
         urlExample.innerHTML = `${currentOrigin}/images/YYYY/MM/YYYY-MM-DD.jpg`;
       }
 
       const count = 4; 
       let html = '';
-      let latestMonthStr = '';
-
       let today = new Date();
 
       for (let i = 0; i < count; i++) {
@@ -402,26 +728,29 @@
         let dateStr = `${year}-${month}-${day}`;
         let imgUrl = `${baseUrl}/${year}/${month}/${dateStr}.jpg`;
 
-        if (i === 0) {
-          latestMonthStr = `${year}年${month}月`;
-        }
-
+        // 生成与 bing-data 统一风格的卡片结构
         html += `
-          <a class="latest-item" href="${imgUrl}" target="_blank" rel="noopener noreferrer">
-            <img src="${imgUrl}" 
-                 alt="${dateStr} Bing UHD 壁纸" 
-                 loading="lazy"
-                 onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\\'http://www.w3.org/2000/svg\\' width=\\'400\\' height=\\'225\\' viewBox=\\'0 0 400 225\\'%3E%3Crect width=\\'400\\' height=\\'225\\' fill=\\'%23e9e9ed\\'/%3E%3Ctext x=\\'50%25\\' y=\\'50%25\\' font-family=\\'system-ui\\' font-size=\\'14\\' fill=\\'%23888\\' dominant-baseline=\\'middle\\' text-anchor=\\'middle\\'%3E当日图片暂未更新%3C/text%3E%3C/svg%3E'">
-            <div class="latest-meta">
-              <span>${dateStr}</span>
-              <span>3840×2160</span>
+          <a class="wallpaper-card" href="${imgUrl}" target="_blank" rel="noopener noreferrer" title="打开 UHD 高清原图">
+            <div class="wallpaper-image-wrap">
+              <img class="wallpaper-image" 
+                   src="${imgUrl}" 
+                   alt="${dateStr} Bing UHD 壁纸" 
+                   loading="lazy"
+                   onerror="this.onerror=null; this.src='data:image/svg+xml,%3Csvg xmlns=\\'http://www.w3.org/2000/svg\\' width=\\'400\\' height=\\'250\\' viewBox=\\'0 0 400 250\\'%3E%3Crect width=\\'400\\' height=\\'250\\' fill=\\'%23e8e8ed\\'/%3E%3Ctext x=\\'50%25\\' y=\\'50%25\\' font-family=\\'system-ui\\' font-size=\\'14\\' fill=\\'%23888\\' dominant-baseline=\\'middle\\' text-anchor=\\'middle\\'%3E当日图片暂未更新%3C/text%3E%3C/svg%3E'">
+            </div>
+            <div class="wallpaper-content">
+              <div class="wallpaper-date">
+                <span>${dateStr}</span>
+                <span>3840×2160</span>
+              </div>
+              <h3 class="wallpaper-title">Bing 每日壁纸</h3>
+              <div class="wallpaper-description">点击查看原图</div>
             </div>
           </a>
         `;
       }
 
       grid.innerHTML = html;
-      badge.textContent = `预览 · ${latestMonthStr}`;
     });
   </script>
 </body>
